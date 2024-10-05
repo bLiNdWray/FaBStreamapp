@@ -1,76 +1,75 @@
-// Firebase Configuration with provided credentials
-var firebaseConfig = {
-    apiKey: "AIzaSyDE_j_W3QHjIQBHsk7ndw8egg_LbBLK2m4",
-    authDomain: "fab-live-life-counter.firebaseapp.com",
-    projectId: "fab-live-life-counter",
-    storageBucket: "fab-live-life-counter.appspot.com",
-    messagingSenderId: "984871364923",
-    appId: "1:984871364923:web:00b4bfa0b477231f7fef1e",
-    measurementId: "G-N2F4JFVNRY"
-};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaBStream Live Form</title>
+    <!-- Firebase SDK Version 8.10.0 -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <h1>FaBStream Live Form</h1>
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-var db = firebase.firestore();
+    <form id="fab-form">
+        <!-- Player Name Input -->
+        <label for="player-name">Player Name:</label>
+        <input type="text" id="player-name" name="player-name" required>
 
-// List of heroes to add to the hero dropdown
-var heroesList = [
-    // Add all the hero names here as in the previous example
-];
+        <!-- Wins Dropdown -->
+        <label for="wins">Wins:</label>
+        <select id="wins" name="wins">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
 
-// Populate Hero Dropdown
-var heroSelect = document.getElementById('hero');
-heroesList.forEach(function(hero) {
-    var option = document.createElement('option');
-    option.value = hero;
-    option.textContent = hero;
-    heroSelect.appendChild(option);
-});
+        <!-- Losses Dropdown -->
+        <label for="losses">Losses:</label>
+        <select id="losses" name="losses">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
 
-// Function to auto-submit data
-function submitData() {
-    var playerName = document.getElementById('player-name').value;
-    var wins = document.getElementById('wins').value;
-    var losses = document.getElementById('losses').value;
-    var draws = document.getElementById('draws').value;
-    var hero = document.getElementById('hero').value;
-    var life = document.getElementById('life-counter').textContent;
+        <!-- Draws Dropdown -->
+        <label for="draws">Draws:</label>
+        <select id="draws" name="draws">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
 
-    if (playerName) {
-        // Save Data to Firebase
-        db.collection('matches').add({
-            playerName: playerName,
-            wins: parseInt(wins),
-            losses: parseInt(losses),
-            draws: parseInt(draws),
-            hero: hero,
-            life: parseInt(life)
-        }).then(function() {
-            console.log('Data submitted successfully!');
-        }).catch(function(error) {
-            console.error('Error submitting data: ', error);
-        });
-    }
-}
+        <!-- Hero Dropdown (populated from database) -->
+        <label for="hero">Hero:</label>
+        <select id="hero" name="hero">
+            <option value="">Select a Hero</option>
+        </select>
 
-// Add event listeners to all the dropdowns and buttons
-document.getElementById('wins').addEventListener('change', submitData);
-document.getElementById('losses').addEventListener('change', submitData);
-document.getElementById('draws').addEventListener('change', submitData);
-document.getElementById('hero').addEventListener('change', submitData);
-
-// Handle Life Counter Increment/Decrement
-var lifeCounter = document.getElementById('life-counter');
-document.getElementById('plus-life').addEventListener('click', function() {
-    lifeCounter.textContent = parseInt(lifeCounter.textContent) + 1;
-    submitData(); // Submit data after changing the life counter
-});
-document.getElementById('minus-life').addEventListener('click', function() {
-    if (parseInt(lifeCounter.textContent) > 0) {
-        lifeCounter.textContent = parseInt(lifeCounter.textContent) - 1;
-        submitData(); // Submit data after changing the life counter
-    }
-});
-
-// Optionally submit data when the player name changes
-document.getElementById('player-name').addEventListener('input', submitData);
+        <!-- Life Counter -->
+        <label for="life-counter">Life Counter:</label>
+        <button type="button" id="minus-life">-</button>
+        <span id="life-counter">40</span>
+        <button type="button" id="plus-life">+</button>
+    </form>
+</body>
+</html>
