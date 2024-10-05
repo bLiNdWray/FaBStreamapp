@@ -19,6 +19,20 @@
         input, select, button {
             margin-bottom: 10px;
         }
+
+        /* Styling for the life counter buttons */
+        .life-counter-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        #life-counter {
+            margin: 10px 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -30,41 +44,41 @@
 
         <!-- Wins Dropdown -->
         <select id="wins" name="wins">
-            <option value="0">Wins: 0</option>
-            <option value="1">Wins: 1</option>
-            <option value="2">Wins: 2</option>
-            <option value="3">Wins: 3</option>
-            <option value="4">Wins: 4</option>
-            <option value="5">Wins: 5</option>
-            <option value="6">Wins: 6</option>
-            <option value="7">Wins: 7</option>
-            <option value="8">Wins: 8</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
         </select>
 
         <!-- Losses Dropdown -->
         <select id="losses" name="losses">
-            <option value="0">Losses: 0</option>
-            <option value="1">Losses: 1</option>
-            <option value="2">Losses: 2</option>
-            <option value="3">Losses: 3</option>
-            <option value="4">Losses: 4</option>
-            <option value="5">Losses: 5</option>
-            <option value="6">Losses: 6</option>
-            <option value="7">Losses: 7</option>
-            <option value="8">Losses: 8</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
         </select>
 
         <!-- Draws Dropdown -->
         <select id="draws" name="draws">
-            <option value="0">Draws: 0</option>
-            <option value="1">Draws: 1</option>
-            <option value="2">Draws: 2</option>
-            <option value="3">Draws: 3</option>
-            <option value="4">Draws: 4</option>
-            <option value="5">Draws: 5</option>
-            <option value="6">Draws: 6</option>
-            <option value="7">Draws: 7</option>
-            <option value="8">Draws: 8</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
         </select>
 
         <!-- Hero Dropdown -->
@@ -73,9 +87,11 @@
         </select>
 
         <!-- Life Counter -->
-        <button type="button" id="minus-life">-</button>
-        <span id="life-counter">40</span>
-        <button type="button" id="plus-life">+</button>
+        <div class="life-counter-container">
+            <button type="button" id="plus-life">+</button>
+            <span id="life-counter">40</span>
+            <button type="button" id="minus-life">-</button>
+        </div>
     </form>
 </body>
 </html>
