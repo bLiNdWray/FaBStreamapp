@@ -33,7 +33,10 @@ document.getElementById('plus-life').addEventListener('click', function() {
     lifeCounter.textContent = parseInt(lifeCounter.textContent) + 1;
 });
 document.getElementById('minus-life').addEventListener('click', function() {
-    lifeCounter.textContent = parseInt(lifeCounter.textContent) - 1;
+    // Ensure life cannot go below 0
+    if (parseInt(lifeCounter.textContent) > 0) {
+        lifeCounter.textContent = parseInt(lifeCounter.textContent) - 1;
+    }
 });
 
 // Handle Form Submission
