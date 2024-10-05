@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Game Form</title>
+</head>
+<body>
+    <h2>Game Tracker</h2>
+    
+    <label for="playerName">Player Name:</label>
+    <input type="text" id="playerName" placeholder="Enter your name"><br><br>
+
+    <label for="record">Record:</label>
+    <select id="record">
+        <option value="wins">Wins</option>
+        <option value="loses">Loses</option>
+        <option value="draws">Draws</option>
+    </select><br><br>
+
+    <label for="heroSelect">Hero Selection:</label>
+    <select id="heroSelect">
+        <!-- Placeholder for hero list -->
+    </select><br><br>
+
+    <label for="life">Life:</label>
+    <button id="decreaseLife">-</button>
+    <span id="lifeCount">40</span>
+    <button id="increaseLife">+</button><br><br>
+
+    <button id="submit">Submit</button>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
