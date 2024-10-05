@@ -9,15 +9,30 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="app.js" defer></script>
     <style>
-        /* Make the form stack vertically */
+        /* Make the form stack vertically except for wins/losses/draws */
         form {
             display: flex;
             flex-direction: column;
-            width: 200px;
+            width: 300px;
         }
 
         input, select, button {
             margin-bottom: 10px;
+        }
+
+        /* Styling for the labels and dropdowns in a row */
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .row label {
+            margin-right: 10px;
+        }
+
+        .row select {
+            margin-right: 20px;
         }
 
         /* Styling for the life counter buttons */
@@ -42,44 +57,47 @@
         <!-- Player Name Input (max 20 characters, no label) -->
         <input type="text" id="player-name" name="player-name" placeholder="Enter player name" maxlength="20" required>
 
-        <!-- Wins Dropdown -->
-        <select id="wins" name="wins">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-        </select>
+        <!-- Wins, Losses, Draws in one row with labels -->
+        <div class="row">
+            <label for="wins">Wins</label>
+            <select id="wins" name="wins">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
 
-        <!-- Losses Dropdown -->
-        <select id="losses" name="losses">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-        </select>
+            <label for="losses">Losses</label>
+            <select id="losses" name="losses">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
 
-        <!-- Draws Dropdown -->
-        <select id="draws" name="draws">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-        </select>
+            <label for="draws">Draws</label>
+            <select id="draws" name="draws">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+        </div>
 
         <!-- Hero Dropdown -->
         <select id="hero" name="hero">
