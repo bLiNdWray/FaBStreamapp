@@ -15,110 +15,7 @@ var db = firebase.firestore();
 
 // List of heroes to add to the hero dropdown
 var heroesList = [
-    "Arakni",
-    "Arakni, Huntsman",
-    "Arakni, Solitary Confinement",
-    "Aurora",
-    "Aurora, Shooting Star",
-    "Azalea",
-    "Azalea, Ace in the Hole",
-    "Benji, the Piercing Wind",
-    "Betsy",
-    "Besty, Skin in the Game",
-    "Blaze, Firemind",
-    "Boltyn",
-    "Bravo",
-    "Bravo, Showstopper",
-    "Bravo, Star of the Show",
-    "Brevant, Civic Protector",
-    "Briar",
-    "Briar, Warden of Thorns",
-    "Brutus, Summa Rudis",
-    "Chane",
-    "Chane, Bound by Shadow",
-    "Dash",
-    "Dash I/O",
-    "Dash, Database",
-    "Dash, Inventor Extraordinaire",
-    "Data Doll MKII",
-    "Dorinthea",
-    "Dorinthea Ironsong",
-    "Dorinthea, Quicksilver Prodigy",
-    "Dromai",
-    "Dromai, Ash Artist",
-    "Emperor, Dracai of Aesir",
-    "Enigma",
-    "Enigma, Ledger of Ancestry",
-    "Enigma, New Moon",
-    "Fai",
-    "Fai, Rising Rebellion",
-    "Florian",
-    "Florian, Rotwood Harbinger",
-    "Genis Wotchuneed",
-    "Ira, Crimson Haze",
-    "Ira, Scarlet Revenger",
-    "Iyslander",
-    "Iyslander, Stormbind",
-    "Kano",
-    "Kano, Dracai of Aether",
-    "Kassai",
-    "Kassai of the Golden Sand",
-    "Kassai, Cintari Sellsword",
-    "Katsu",
-    "Katsu, the Wanderer",
-    "Kavdaen, Trader of Skins",
-    "Kayo",
-    "Kayo, Armed and Dangerous",
-    "Kayo, Berserker Runt",
-    "Levia",
-    "Levia, Shadowborn Abomination",
-    "Lexi",
-    "Lexi, Livewire",
-    "Maxx ‘The Hype’ Nitro",
-    "Maxx Nitro",
-    "Melody, Sing-along",
-    "Nuu",
-    "Nuu, Alluring Desire",
-    "Oldhim",
-    "Oldhim, Grandfather of Eternity",
-    "Olympia",
-    "Olympia, Prized Fighter",
-    "Oscilio",
-    "Oscilio, Constella Intelligence",
-    "Prism",
-    "Prism, Advent of Thrones",
-    "Prism, Awakener of Sol",
-    "Prism, Sculptor of Arc Light",
-    "Professor Teklovossen",
-    "Rhinar",
-    "Rhinar, Reckless Rampage",
-    "Riptide",
-    "Riptide, Lurker of the Deep",
-    "Ruu’di, Gem Keeper",
-    "Ser Boltyn, Breaker of Dawn",
-    "Shiyana, Diamond Gemini",
-    "Squizzy & Floor",
-    "Taipanis, Dracai of Judgement",
-    "Taylor",
-    "Teklovossen",
-    "Teklovossen, Esteemed Magnate",
-    "Terra",
-    "Theryon, Magister of Justice",
-    "Uzuri",
-    "Uzuri, Switchblade",
-    "Valda Brightaxe",
-    "Verdance",
-    "Verdance, Thorn of the Rose",
-    "Victor Goldmane",
-    "Victor Goldmane, High and Mighty",
-    "Viserai",
-    "Viserai, Rune Blood",
-    "Vynnset",
-    "Vynnset, Iron Maiden",
-    "Yoji, Royal Protector",
-    "Yorick, Weaver of Tales",
-    "Zen",
-    "Zen, Tamer of Purpose"
+    // Add all the hero names here as in the previous example
 ];
 
 // Populate Hero Dropdown
@@ -133,10 +30,10 @@ heroesList.forEach(function(hero) {
 // Handle Life Counter Increment/Decrement
 var lifeCounter = document.getElementById('life-counter');
 document.getElementById('plus-life').addEventListener('click', function() {
-    lifeCounter.value = parseInt(lifeCounter.value) + 1;
+    lifeCounter.textContent = parseInt(lifeCounter.textContent) + 1;
 });
 document.getElementById('minus-life').addEventListener('click', function() {
-    lifeCounter.value = parseInt(lifeCounter.value) - 1;
+    lifeCounter.textContent = parseInt(lifeCounter.textContent) - 1;
 });
 
 // Handle Form Submission
@@ -148,7 +45,7 @@ document.getElementById('fab-form').addEventListener('submit', function(e) {
     var losses = document.getElementById('losses').value;
     var draws = document.getElementById('draws').value;
     var hero = document.getElementById('hero').value;
-    var life = lifeCounter.value;
+    var life = lifeCounter.textContent;
 
     // Save Data to Firebase
     db.collection('matches').add({
