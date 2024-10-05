@@ -19,4 +19,37 @@
 
         <!-- Wins, Losses, Draws Dropdowns -->
         <label for="wins">Wins:</label>
-        <select id="wins" name="wins
+        <select id="wins" name="wins">
+            <option value="0">0</option>
+            <!-- Options up to 8 -->
+        </select>
+
+        <label for="losses">Losses:</label>
+        <select id="losses" name="losses">
+            <option value="0">0</option>
+            <!-- Options up to 8 -->
+        </select>
+
+        <label for="draws">Draws:</label>
+        <select id="draws" name="draws">
+            <option value="0">0</option>
+            <!-- Options up to 8 -->
+        </select>
+
+        <!-- Hero Dropdown (populated from database) -->
+        <label for="hero">Hero:</label>
+        <select id="hero" name="hero">
+            <option value="">Select a Hero</option>
+        </select>
+
+        <!-- Life Counter -->
+        <label for="life-counter">Life Counter:</label>
+        <button type="button" id="minus-life">-</button>
+        <span id="life-counter">40</span> <!-- Display the life counter as a number -->
+        <button type="button" id="plus-life">+</button>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
