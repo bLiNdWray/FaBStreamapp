@@ -17,7 +17,7 @@
         }
 
         /* Left-aligned Counter form */
-        #counter-form {
+        .counter-form {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -25,7 +25,7 @@
         }
 
         /* Right-aligned Door form */
-        #door-form {
+        .door-form {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -79,7 +79,7 @@
 
     <div class="sections" id="sections-container">
         <!-- Counter Section -->
-        <form id="counter-form">
+        <form class="counter-form" id="counter-form">
             <h2>Counter</h2>
             <input type="text" id="counter-name" name="counter-name" placeholder="Enter counter name" maxlength="20" required>
 
@@ -136,7 +136,7 @@
         </form>
 
         <!-- Door Section -->
-        <form id="door-form">
+        <form class="door-form" id="door-form">
             <h2>Door</h2>
             <input type="text" id="door-name" name="door-name" placeholder="Enter door name" maxlength="20" required>
 
