@@ -60,17 +60,23 @@
             margin-bottom: 10px;
         }
 
-        /* Set counter size to 40 and enlarge plus/minus buttons */
+        /* Double the size of the counter text */
         #counter-life-counter, #door-life-counter {
             margin: 10px 0;
-            font-size: 40px;
+            font-size: 80px; /* Double the size of 40px */
             font-weight: bold;
         }
 
-        /* Triple the size of the plus and minus buttons */
-        button {
-            font-size: 3em;
-            padding: 10px 20px;
+        /* Halve the size of the plus and minus buttons */
+        .life-counter-container button {
+            font-size: 1.5em;  /* Halved from 3em */
+            padding: 5px 10px; /* Reduced padding */
+        }
+
+        /* Reset and swap buttons at original size */
+        .bottom-buttons button {
+            font-size: 1em;
+            padding: 5px 10px;
         }
 
         /* Styling for buttons at the bottom */
