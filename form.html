@@ -200,6 +200,37 @@
     </div>
 
     <script>
+        // List of Heroes to populate the dropdowns
+        const heroesList = [
+            "Arakni", "Arakni, Huntsman", "Aurora", "Azalea", "Benji", "Bravo", "Chane", 
+            "Dash", "Dorinthea", "Dromai", "Emperor", "Fai", "Genis Wotchuneed", "Ira",
+            "Iyslander", "Kano", "Kassai", "Katsu", "Levia", "Lexi", "Oldhim", "Prism", 
+            "Rhinar", "Riptide", "Shiyana", "Viserai", "Yoji"
+        ];
+
+        // Populate hero dropdowns for both sections
+        function populateHeroDropdowns() {
+            const counterHeroSelect = document.getElementById('counter-hero');
+            const doorHeroSelect = document.getElementById('door-hero');
+            
+            // Clear previous options
+            counterHeroSelect.innerHTML = '<option value="">Select a Hero</option>';
+            doorHeroSelect.innerHTML = '<option value="">Select a Hero</option>';
+
+            // Populate new options
+            heroesList.forEach(hero => {
+                const option = document.createElement('option');
+                option.value = hero;
+                option.textContent = hero;
+
+                counterHeroSelect.appendChild(option.cloneNode(true));  // Add to counter
+                doorHeroSelect.appendChild(option);  // Add to door
+            });
+        }
+
+        // Call populateHeroDropdowns on page load
+        populateHeroDropdowns();
+
         // Functionality for the reset button
         document.getElementById('reset-button').addEventListener('click', function() {
             resetForm('counter');
