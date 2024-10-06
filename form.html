@@ -16,19 +16,11 @@
             margin-bottom: 20px;
         }
 
-        /* Left-aligned Counter form */
-        .counter-form {
+        /* Center the entire content of the Counter and Door forms */
+        .counter-form, .door-form {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            width: 45%;
-        }
-
-        /* Right-aligned Door form */
-        .door-form {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
+            align-items: center;  /* Center horizontally */
             width: 45%;
         }
 
@@ -43,6 +35,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            width: 100%;  /* Ensure the row spans the full width */
         }
 
         .row label {
@@ -60,7 +53,6 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 10px;
-            height: 200px; /* Set a fixed height to vertically center the counter */
         }
 
         /* Double the size of the counter text */
