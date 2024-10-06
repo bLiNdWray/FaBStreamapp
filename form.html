@@ -53,21 +53,14 @@
             margin-right: 20px;
         }
 
-        /* Center everything: hero selector, counter, buttons */
+        /* Center the life counter and buttons horizontally */
         .life-counter-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100%;  /* Make sure it's full width */
-            text-align: center;
-        }
-
-        /* Center hero selector */
-        .hero-selector {
-            display: flex;
-            justify-content: center;
             width: 100%;
+            margin-bottom: 10px;
         }
 
         /* Double the size of the counter text */
@@ -87,6 +80,12 @@
         .bottom-buttons button {
             font-size: 1em;
             padding: 5px 10px;
+        }
+
+        /* Align the hero selector correctly */
+        #counter-hero, #door-hero {
+            align-self: flex-start;
+            margin-bottom: 20px;
         }
 
         /* Styling for buttons at the bottom */
@@ -147,12 +146,9 @@
                 </select>
             </div>
 
-            <!-- Centered hero selector -->
-            <div class="hero-selector">
-                <select id="counter-hero" name="hero">
-                    <option value="">Select a Hero</option>
-                </select>
-            </div>
+            <select id="counter-hero" name="hero">
+                <option value="">Select a Hero</option>
+            </select>
 
             <div class="life-counter-container">
                 <button type="button" id="plus-counter-life">+</button>
@@ -207,12 +203,9 @@
                 </select>
             </div>
 
-            <!-- Centered hero selector -->
-            <div class="hero-selector">
-                <select id="door-hero" name="hero">
-                    <option value="">Select a Hero</option>
-                </select>
-            </div>
+            <select id="door-hero" name="hero">
+                <option value="">Select a Hero</option>
+            </select>
 
             <div class="life-counter-container">
                 <button type="button" id="plus-door-life">+</button>
