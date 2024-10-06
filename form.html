@@ -202,22 +202,19 @@
     <script>
         // Functionality for the reset button
         document.getElementById('reset-button').addEventListener('click', function() {
-            // Reset Counter section
-            document.getElementById('counter-name').value = '';
-            document.getElementById('counter-wins').value = '0';
-            document.getElementById('counter-losses').value = '0';
-            document.getElementById('counter-draws').value = '0';
-            document.getElementById('counter-hero').value = '';
-            document.getElementById('counter-life-counter').textContent = '40';
-
-            // Reset Door section
-            document.getElementById('door-name').value = '';
-            document.getElementById('door-wins').value = '0';
-            document.getElementById('door-losses').value = '0';
-            document.getElementById('door-draws').value = '0';
-            document.getElementById('door-hero').value = '';
-            document.getElementById('door-life-counter').textContent = '40';
+            resetForm('counter');
+            resetForm('door');
         });
+
+        // Reset function for forms
+        function resetForm(section) {
+            document.getElementById(`${section}-name`).value = '';
+            document.getElementById(`${section}-wins`).value = '0';
+            document.getElementById(`${section}-losses`).value = '0';
+            document.getElementById(`${section}-draws`).value = '0';
+            document.getElementById(`${section}-hero`).value = '';
+            document.getElementById(`${section}-life-counter`).textContent = '40';
+        }
 
         // Functionality for the swap button
         document.getElementById('swap-button').addEventListener('click', function() {
@@ -243,6 +240,33 @@
                 doorForm.style.alignItems = 'flex-start';
             }
         });
+
+        // Event listeners for life counters
+        document.getElementById('plus-counter-life').addEventListener('click', function() {
+            incrementLife('counter');
+        });
+        document.getElementById('minus-counter-life').addEventListener('click', function() {
+            decrementLife('counter');
+        });
+        document.getElementById('plus-door-life').addEventListener('click', function() {
+            incrementLife('door');
+        });
+        document.getElementById('minus-door-life').addEventListener('click', function() {
+            decrementLife('door');
+        });
+
+        // Functions to increment and decrement life
+        function incrementLife(section) {
+            const lifeCounter = document.getElementById(`${section}-life-counter`);
+            lifeCounter.textContent = parseInt(lifeCounter.textContent) + 1;
+        }
+
+        function decrementLife(section) {
+            const lifeCounter = document.getElementById(`${section}-life-counter`);
+            if (parseInt(lifeCounter.textContent) > 0) {
+                lifeCounter.textContent = parseInt(lifeCounter.textContent) - 1;
+            }
+        }
     </script>
 </body>
 </html>
