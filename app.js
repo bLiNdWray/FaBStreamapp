@@ -1,96 +1,113 @@
-// Firebase Configuration with provided credentials
-var firebaseConfig = {
-    apiKey: "AIzaSyDE_j_W3QHjIQBHsk7ndw8egg_LbBLK2m4",
-    authDomain: "fab-live-life-counter.firebaseapp.com",
-    projectId: "fab-live-life-counter",
-    storageBucket: "fab-live-life-counter.appspot.com",
-    messagingSenderId: "984871364923",
-    appId: "1:984871364923:web:00b4bfa0b477231f7fef1e",
-    measurementId: "G-N2F4JFVNRY"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-var db = firebase.firestore();
-
-// List of heroes to add to the hero dropdown
-var heroesList = [
-    "Arakni", "Arakni, Huntsman", "Arakni, Solitary Confinement", "Aurora", "Aurora, Shooting Star", "Azalea", 
+// List of Heroes to populate the dropdowns
+const heroesList = [
+    "Arakni", "Arakni, Huntsman", "Arakni, Solitary Confinement", "Aurora", "Aurora, Shooting Star", "Azalea",
     "Azalea, Ace in the Hole", "Benji, the Piercing Wind", "Betsy", "Besty, Skin in the Game", "Blaze, Firemind",
     "Boltyn", "Bravo", "Bravo, Showstopper", "Bravo, Star of the Show", "Brevant, Civic Protector", "Briar",
-    "Briar, Warden of Thorns", "Brutus, Summa Rudis", "Chane", "Chane, Bound by Shadow", "Dash", "Dash I/O", 
-    "Dash, Database", "Dash, Inventor Extraordinaire", "Data Doll MKII", "Dorinthea", "Dorinthea Ironsong", 
-    "Dorinthea, Quicksilver Prodigy", "Dromai", "Dromai, Ash Artist", "Emperor, Dracai of Aesir", "Enigma", 
-    "Enigma, Ledger of Ancestry", "Enigma, New Moon", "Fai", "Fai, Rising Rebellion", "Florian", "Florian, Rotwood Harbinger", 
-    "Genis Wotchuneed", "Ira, Crimson Haze", "Ira, Scarlet Revenger", "Iyslander", "Iyslander, Stormbind", "Kano", 
-    "Kano, Dracai of Aether", "Kassai", "Kassai of the Golden Sand", "Kassai, Cintari Sellsword", "Katsu", 
-    "Katsu, the Wanderer", "Kavdaen, Trader of Skins", "Kayo", "Kayo, Armed and Dangerous", "Kayo, Berserker Runt", 
-    "Levia", "Levia, Shadowborn Abomination", "Lexi", "Lexi, Livewire", "Maxx ‘The Hype’ Nitro", "Maxx Nitro", 
-    "Melody, Sing-along", "Nuu", "Nuu, Alluring Desire", "Oldhim", "Oldhim, Grandfather of Eternity", "Olympia", 
-    "Olympia, Prized Fighter", "Oscilio", "Oscilio, Constella Intelligence", "Prism", "Prism, Advent of Thrones", 
-    "Prism, Awakener of Sol", "Prism, Sculptor of Arc Light", "Professor Teklovossen", "Rhinar", "Rhinar, Reckless Rampage", 
-    "Riptide", "Riptide, Lurker of the Deep", "Ruu’di, Gem Keeper", "Ser Boltyn, Breaker of Dawn", "Shiyana, Diamond Gemini", 
-    "Squizzy & Floor", "Taipanis, Dracai of Judgement", "Taylor", "Teklovossen", "Teklovossen, Esteemed Magnate", 
-    "Terra", "Theryon, Magister of Justice", "Uzuri", "Uzuri, Switchblade", "Valda Brightaxe", "Verdance", 
-    "Verdance, Thorn of the Rose", "Victor Goldmane", "Victor Goldmane, High and Mighty", "Viserai", "Viserai, Rune Blood", 
-    "Vynnset", "Vynnset, Iron Maiden", "Yoji", "Yorick, Weaver of Tales", "Zen", "Zen, Tamer of Purpose"
+    "Briar, Warden of Thorns", "Brutus, Summa Rudis", "Chane", "Chane, Bound by Shadow", "Dash", "Dash I/O",
+    "Dash, Database", "Dash, Inventor Extraordinaire", "Data Doll MKII", "Dorinthea", "Dorinthea Ironsong",
+    "Dorinthea, Quicksilver Prodigy", "Dromai", "Dromai, Ash Artist", "Emperor, Dracai of Aesir", "Enigma",
+    "Enigma, Ledger of Ancestry", "Enigma, New Moon", "Fai", "Fai, Rising Rebellion", "Florian", "Florian, Rotwood Harbinger",
+    "Genis Wotchuneed", "Ira, Crimson Haze", "Ira, Scarlet Revenger", "Iyslander", "Iyslander, Stormbind", "Kano",
+    "Kano, Dracai of Aether", "Kassai", "Kassai of the Golden Sand", "Kassai, Cintari Sellsword", "Katsu",
+    "Katsu, the Wanderer", "Kavdaen, Trader of Skins", "Kayo", "Kayo, Armed and Dangerous", "Kayo, Berserker Runt",
+    "Levia", "Levia, Shadowborn Abomination", "Lexi", "Lexi, Livewire", "Maxx ‘The Hype’ Nitro", "Maxx Nitro",
+    "Melody, Sing-along", "Nuu", "Nuu, Alluring Desire", "Oldhim", "Oldhim, Grandfather of Eternity", "Olympia",
+    "Olympia, Prized Fighter", "Oscilio", "Oscilio, Constella Intelligence", "Prism", "Prism, Advent of Thrones",
+    "Prism, Awakener of Sol", "Prism, Sculptor of Arc Light", "Professor Teklovossen", "Rhinar", "Rhinar, Reckless Rampage",
+    "Riptide", "Riptide, Lurker of the Deep", "Ruu’di, Gem Keeper", "Ser Boltyn, Breaker of Dawn", "Shiyana, Diamond Gemini",
+    "Squizzy & Floor", "Taipanis, Dracai of Judgement", "Taylor", "Teklovossen", "Teklovossen, Esteemed Magnate",
+    "Terra", "Theryon, Magister of Justice", "Uzuri", "Uzuri, Switchblade", "Valda Brightaxe", "Verdance",
+    "Verdance, Thorn of the Rose", "Victor Goldmane", "Victor Goldmane, High and Mighty", "Viserai", "Viserai, Rune Blood",
+    "Vynnset", "Vynnset, Iron Maiden", "Yoji, Royal Protector", "Yorick, Weaver of Tales", "Zen", "Zen, Tamer of Purpose"
 ];
 
-// Populate Hero Dropdown
-var heroSelect = document.getElementById('hero');
-heroesList.forEach(function(hero) {
-    var option = document.createElement('option');
-    option.value = hero;
-    option.textContent = hero;
-    heroSelect.appendChild(option);
-});
+// Populate hero dropdowns for both sections
+function populateHeroDropdowns() {
+    const counterHeroSelect = document.getElementById('counter-hero');
+    const doorHeroSelect = document.getElementById('door-hero');
+    
+    // Clear previous options
+    counterHeroSelect.innerHTML = '<option value="">Select a Hero</option>';
+    doorHeroSelect.innerHTML = '<option value="">Select a Hero</option>';
 
-// Function to auto-submit data
-function submitData() {
-    var playerName = document.getElementById('player-name').value;
-    var wins = document.getElementById('wins').value;
-    var losses = document.getElementById('losses').value;
-    var draws = document.getElementById('draws').value;
-    var hero = document.getElementById('hero').value || "Unknown"; // Default to "Unknown" if no hero is selected
-    var life = document.getElementById('life-counter').textContent;
+    // Populate new options
+    heroesList.forEach(hero => {
+        const option = document.createElement('option');
+        option.value = hero;
+        option.textContent = hero;
 
-    if (playerName) {
-        // Save Data to Firebase
-        db.collection('matches').add({
-            playerName: playerName,
-            wins: parseInt(wins),
-            losses: parseInt(losses),
-            draws: parseInt(draws),
-            hero: hero,
-            life: parseInt(life)
-        }).then(function() {
-            console.log('Data submitted successfully!');
-        }).catch(function(error) {
-            console.error('Error submitting data: ', error);
-        });
-    } else {
-        console.log('Player name is required.');
-    }
+        counterHeroSelect.appendChild(option.cloneNode(true));  // Add to counter
+        doorHeroSelect.appendChild(option);  // Add to door
+    });
 }
 
-// Add event listeners to all the dropdowns and buttons
-document.getElementById('wins').addEventListener('change', submitData);
-document.getElementById('losses').addEventListener('change', submitData);
-document.getElementById('draws').addEventListener('change', submitData);
-document.getElementById('hero').addEventListener('change', submitData);
+// Call populateHeroDropdowns on page load
+populateHeroDropdowns();
 
-// Handle Life Counter Increment/Decrement
-var lifeCounter = document.getElementById('life-counter');
-document.getElementById('plus-life').addEventListener('click', function() {
-    lifeCounter.textContent = parseInt(lifeCounter.textContent) + 1;
-    submitData(); // Submit data after changing the life counter
+// Functionality for the reset button
+document.getElementById('reset-button').addEventListener('click', function() {
+    resetForm('counter');
+    resetForm('door');
 });
-document.getElementById('minus-life').addEventListener('click', function() {
-    if (parseInt(lifeCounter.textContent) > 0) {
-        lifeCounter.textContent = parseInt(lifeCounter.textContent) - 1;
-        submitData(); // Submit data after changing the life counter
+
+// Reset function for forms
+function resetForm(section) {
+    document.getElementById(`${section}-name`).value = '';
+    document.getElementById(`${section}-wins`).value = '0';
+    document.getElementById(`${section}-losses`).value = '0';
+    document.getElementById(`${section}-draws`).value = '0';
+    document.getElementById(`${section}-hero`).value = '';
+    document.getElementById(`${section}-life-counter`).textContent = '40';
+}
+
+// Functionality for the swap button
+document.getElementById('swap-button').addEventListener('click', function() {
+    const sectionsContainer = document.getElementById('sections-container');
+    const counterForm = document.getElementById('counter-form');
+    const doorForm = document.getElementById('door-form');
+
+    // Swap the positions of Counter and Door sections
+    if (counterForm === sectionsContainer.firstElementChild) {
+        sectionsContainer.appendChild(counterForm); // Move Counter to the end
+        sectionsContainer.insertBefore(doorForm, sectionsContainer.firstElementChild); // Move Door to the beginning
+    } else {
+        sectionsContainer.appendChild(doorForm); // Move Door to the end
+        sectionsContainer.insertBefore(counterForm, sectionsContainer.firstElementChild); // Move Counter to the beginning
+    }
+
+    // Adjust the alignment based on the current order
+    if (counterForm === sectionsContainer.firstElementChild) {
+        counterForm.style.alignItems = 'flex-start';
+        doorForm.style.alignItems = 'flex-end';
+    } else {
+        counterForm.style.alignItems = 'flex-end';
+        doorForm.style.alignItems = 'flex-start';
     }
 });
 
-// Optionally submit data when the player name changes
-document.getElementById('player-name').addEventListener('input', submitData);
+// Event listeners for life counters
+document.getElementById('plus-counter-life').addEventListener('click', function() {
+    incrementLife('counter');
+});
+document.getElementById('minus-counter-life').addEventListener('click', function() {
+    decrementLife('counter');
+});
+document.getElementById('plus-door-life').addEventListener('click', function() {
+    incrementLife('door');
+});
+document.getElementById('minus-door-life').addEventListener('click', function() {
+    decrementLife('door');
+});
+
+// Functions to increment and decrement life
+function incrementLife(section) {
+    const lifeCounter = document.getElementById(`${section}-life-counter`);
+    lifeCounter.textContent = parseInt(lifeCounter.textContent) + 1;
+}
+
+function decrementLife(section) {
+    const lifeCounter = document.getElementById(`${section}-life-counter`);
+    if (parseInt(lifeCounter.textContent) > 0) {
+        lifeCounter.textContent = parseInt(lifeCounter.textContent) - 1;
+    }
+}
