@@ -9,22 +9,22 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="app.js" defer></script>
     <style>
-        /* Make the form stack vertically except for wins/losses/draws */
         form {
             display: flex;
             flex-direction: column;
             width: 300px;
+            margin-bottom: 30px;
         }
 
         input, select, button {
             margin-bottom: 10px;
         }
 
-        /* Styling for the labels and dropdowns in a row */
         .row {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 20px;
         }
 
         .row label {
@@ -35,7 +35,6 @@
             margin-right: 20px;
         }
 
-        /* Styling for the life counter buttons */
         .life-counter-container {
             display: flex;
             flex-direction: column;
@@ -48,19 +47,24 @@
             font-size: 20px;
             font-weight: bold;
         }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <h1>Table App</h1>
 
-    <form id="fab-form">
-        <!-- Player Name Input (max 20 characters, no label) -->
+    <!-- Player Section -->
+    <h2>Player</h2>
+    <form id="player-form">
         <input type="text" id="player-name" name="player-name" placeholder="Enter player name" maxlength="20" required>
 
-        <!-- Wins, Losses, Draws in one row with labels -->
         <div class="row">
-            <label for="wins">Wins</label>
-            <select id="wins" name="wins">
+            <label for="player-wins">Wins</label>
+            <select id="player-wins" name="wins">
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -72,8 +76,8 @@
                 <option value="8">8</option>
             </select>
 
-            <label for="losses">Losses</label>
-            <select id="losses" name="losses">
+            <label for="player-losses">Losses</label>
+            <select id="player-losses" name="losses">
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -85,8 +89,8 @@
                 <option value="8">8</option>
             </select>
 
-            <label for="draws">Draws</label>
-            <select id="draws" name="draws">
+            <label for="player-draws">Draws</label>
+            <select id="player-draws" name="draws">
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -99,16 +103,128 @@
             </select>
         </div>
 
-        <!-- Hero Dropdown -->
-        <select id="hero" name="hero">
+        <select id="player-hero" name="hero">
             <option value="">Select a Hero</option>
         </select>
 
-        <!-- Life Counter -->
         <div class="life-counter-container">
-            <button type="button" id="plus-life">+</button>
-            <span id="life-counter">40</span>
-            <button type="button" id="minus-life">-</button>
+            <button type="button" id="plus-player-life">+</button>
+            <span id="player-life-counter">40</span>
+            <button type="button" id="minus-player-life">-</button>
+        </div>
+    </form>
+
+    <!-- Counter Section -->
+    <h2>Counter</h2>
+    <form id="counter-form">
+        <input type="text" id="counter-name" name="counter-name" placeholder="Enter counter name" maxlength="20" required>
+
+        <div class="row">
+            <label for="counter-wins">Wins</label>
+            <select id="counter-wins" name="wins">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+
+            <label for="counter-losses">Losses</label>
+            <select id="counter-losses" name="losses">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+
+            <label for="counter-draws">Draws</label>
+            <select id="counter-draws" name="draws">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+        </div>
+
+        <select id="counter-hero" name="hero">
+            <option value="">Select a Hero</option>
+        </select>
+
+        <div class="life-counter-container">
+            <button type="button" id="plus-counter-life">+</button>
+            <span id="counter-life-counter">40</span>
+            <button type="button" id="minus-counter-life">-</button>
+        </div>
+    </form>
+
+    <!-- Door Section -->
+    <h2>Door</h2>
+    <form id="door-form">
+        <input type="text" id="door-name" name="door-name" placeholder="Enter door name" maxlength="20" required>
+
+        <div class="row">
+            <label for="door-wins">Wins</label>
+            <select id="door-wins" name="wins">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+
+            <label for="door-losses">Losses</label>
+            <select id="door-losses" name="losses">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+
+            <label for="door-draws">Draws</label>
+            <select id="door-draws" name="draws">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+        </div>
+
+        <select id="door-hero" name="hero">
+            <option value="">Select a Hero</option>
+        </select>
+
+        <div class="life-counter-container">
+            <button type="button" id="plus-door-life">+</button>
+            <span id="door-life-counter">40</span>
+            <button type="button" id="minus-door-life">-</button>
         </div>
     </form>
 </body>
