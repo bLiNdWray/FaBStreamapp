@@ -40,7 +40,7 @@
         /* Styling for rows (Wins, Losses, Draws) */
         .row {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Ensure labels and selects are justified */
             align-items: center;
             margin-bottom: 20px;
         }
@@ -53,14 +53,14 @@
             margin-right: 20px;
         }
 
-        /* Center the life counter and buttons horizontally */
+        /* Center the counter and buttons */
         .life-counter-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100%;
             margin-bottom: 10px;
+            width: 100%; /* Full width for centering */
         }
 
         /* Double the size of the counter text */
@@ -80,12 +80,6 @@
         .bottom-buttons button {
             font-size: 1em;
             padding: 5px 10px;
-        }
-
-        /* Align the hero selector correctly */
-        #counter-hero, #door-hero {
-            align-self: flex-start;
-            margin-bottom: 20px;
         }
 
         /* Styling for buttons at the bottom */
