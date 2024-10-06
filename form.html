@@ -9,11 +9,15 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="app.js" defer></script>
     <style>
-        form {
+        /* Layout for the Counter and Door sections */
+        .sections {
             display: flex;
-            flex-direction: column;
-            width: 300px;
-            margin-bottom: 30px;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 45%;
         }
 
         input, select, button {
@@ -48,184 +52,174 @@
             font-weight: bold;
         }
 
-        h2 {
+        /* Styling for buttons at the bottom */
+        .bottom-buttons {
+            display: flex;
+            justify-content: space-between;
             margin-top: 20px;
-            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <h1>Table App</h1>
 
-    <!-- Player Section -->
-    <h2>Player</h2>
-    <form id="player-form">
-        <input type="text" id="player-name" name="player-name" placeholder="Enter player name" maxlength="20" required>
+    <div class="sections" id="sections-container">
+        <!-- Counter Section -->
+        <form id="counter-form">
+            <h2>Counter</h2>
+            <input type="text" id="counter-name" name="counter-name" placeholder="Enter counter name" maxlength="20" required>
 
-        <div class="row">
-            <label for="player-wins">Wins</label>
-            <select id="player-wins" name="wins">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
+            <div class="row">
+                <label for="counter-wins">Wins</label>
+                <select id="counter-wins" name="wins">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+
+                <label for="counter-losses">Losses</label>
+                <select id="counter-losses" name="losses">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+
+                <label for="counter-draws">Draws</label>
+                <select id="counter-draws" name="draws">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
+
+            <select id="counter-hero" name="hero">
+                <option value="">Select a Hero</option>
             </select>
 
-            <label for="player-losses">Losses</label>
-            <select id="player-losses" name="losses">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
+            <div class="life-counter-container">
+                <button type="button" id="plus-counter-life">+</button>
+                <span id="counter-life-counter">40</span>
+                <button type="button" id="minus-counter-life">-</button>
+            </div>
+        </form>
+
+        <!-- Door Section -->
+        <form id="door-form">
+            <h2>Door</h2>
+            <input type="text" id="door-name" name="door-name" placeholder="Enter door name" maxlength="20" required>
+
+            <div class="row">
+                <label for="door-wins">Wins</label>
+                <select id="door-wins" name="wins">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+
+                <label for="door-losses">Losses</label>
+                <select id="door-losses" name="losses">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+
+                <label for="door-draws">Draws</label>
+                <select id="door-draws" name="draws">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
+
+            <select id="door-hero" name="hero">
+                <option value="">Select a Hero</option>
             </select>
 
-            <label for="player-draws">Draws</label>
-            <select id="player-draws" name="draws">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
-        </div>
+            <div class="life-counter-container">
+                <button type="button" id="plus-door-life">+</button>
+                <span id="door-life-counter">40</span>
+                <button type="button" id="minus-door-life">-</button>
+            </div>
+        </form>
+    </div>
 
-        <select id="player-hero" name="hero">
-            <option value="">Select a Hero</option>
-        </select>
+    <!-- Buttons at the bottom for Reset and Swap -->
+    <div class="bottom-buttons">
+        <button type="button" id="reset-button">Reset</button>
+        <button type="button" id="swap-button">Swap Counter and Door</button>
+    </div>
 
-        <div class="life-counter-container">
-            <button type="button" id="plus-player-life">+</button>
-            <span id="player-life-counter">40</span>
-            <button type="button" id="minus-player-life">-</button>
-        </div>
-    </form>
+    <script>
+        // Functionality for the reset button
+        document.getElementById('reset-button').addEventListener('click', function() {
+            // Reset Counter section
+            document.getElementById('counter-name').value = '';
+            document.getElementById('counter-wins').value = '0';
+            document.getElementById('counter-losses').value = '0';
+            document.getElementById('counter-draws').value = '0';
+            document.getElementById('counter-hero').value = '';
+            document.getElementById('counter-life-counter').textContent = '40';
 
-    <!-- Counter Section -->
-    <h2>Counter</h2>
-    <form id="counter-form">
-        <input type="text" id="counter-name" name="counter-name" placeholder="Enter counter name" maxlength="20" required>
+            // Reset Door section
+            document.getElementById('door-name').value = '';
+            document.getElementById('door-wins').value = '0';
+            document.getElementById('door-losses').value = '0';
+            document.getElementById('door-draws').value = '0';
+            document.getElementById('door-hero').value = '';
+            document.getElementById('door-life-counter').textContent = '40';
+        });
 
-        <div class="row">
-            <label for="counter-wins">Wins</label>
-            <select id="counter-wins" name="wins">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
+        // Functionality for the swap button
+        document.getElementById('swap-button').addEventListener('click', function() {
+            const sectionsContainer = document.getElementById('sections-container');
+            const counterForm = document.getElementById('counter-form');
+            const doorForm = document.getElementById('door-form');
 
-            <label for="counter-losses">Losses</label>
-            <select id="counter-losses" name="losses">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
-
-            <label for="counter-draws">Draws</label>
-            <select id="counter-draws" name="draws">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
-        </div>
-
-        <select id="counter-hero" name="hero">
-            <option value="">Select a Hero</option>
-        </select>
-
-        <div class="life-counter-container">
-            <button type="button" id="plus-counter-life">+</button>
-            <span id="counter-life-counter">40</span>
-            <button type="button" id="minus-counter-life">-</button>
-        </div>
-    </form>
-
-    <!-- Door Section -->
-    <h2>Door</h2>
-    <form id="door-form">
-        <input type="text" id="door-name" name="door-name" placeholder="Enter door name" maxlength="20" required>
-
-        <div class="row">
-            <label for="door-wins">Wins</label>
-            <select id="door-wins" name="wins">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
-
-            <label for="door-losses">Losses</label>
-            <select id="door-losses" name="losses">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
-
-            <label for="door-draws">Draws</label>
-            <select id="door-draws" name="draws">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>
-        </div>
-
-        <select id="door-hero" name="hero">
-            <option value="">Select a Hero</option>
-        </select>
-
-        <div class="life-counter-container">
-            <button type="button" id="plus-door-life">+</button>
-            <span id="door-life-counter">40</span>
-            <button type="button" id="minus-door-life">-</button>
-        </div>
-    </form>
+            // Swap the positions of Counter and Door sections
+            if (counterForm === sectionsContainer.firstElementChild) {
+                sectionsContainer.appendChild(counterForm); // Move Counter to the end
+                sectionsContainer.insertBefore(doorForm, sectionsContainer.firstElementChild); // Move Door to the beginning
+            } else {
+                sectionsContainer.appendChild(doorForm); // Move Door to the end
+                sectionsContainer.insertBefore(counterForm, sectionsContainer.firstElementChild); // Move Counter to the beginning
+            }
+        });
+    </script>
 </body>
 </html>
