@@ -111,3 +111,45 @@ function decrementLife(section) {
         lifeCounter.textContent = parseInt(lifeCounter.textContent) - 1;
     }
 }
+// Function to create initial player data in Firestore
+function createInitialData() {
+    const initialData = {
+        counter: {
+            name: "John Doe",
+            wins: 0,
+            losses: 0,
+            draws: 0,
+            hero: "None",
+            life: 40
+        },
+        door: {
+            name: "Jane Smith",
+            wins: 0,
+            losses: 0,
+            draws: 0,
+            hero: "None",
+            life: 40
+        }
+    };
+
+    // Create the Counter document
+    db.collection("players").doc("counter").set(initialData.counter)
+        .then(() => {
+            console.log("Counter document created successfully!");
+        })
+        .catch(error => {
+            console.error("Error creating Counter document: ", error);
+        });
+
+    // Create the Door document
+    db.collection("players").doc("door").set(initialData.door)
+        .then(() => {
+            console.log("Door document created successfully!");
+        })
+        .catch(error => {
+            console.error("Error creating Door document: ", error);
+        });
+}
+
+// Call the function to create initial data
+createInitialData();
