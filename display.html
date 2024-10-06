@@ -98,8 +98,17 @@
             document.getElementById('door-life').textContent = doorData.life || 40;
         }
 
+        // Debugging: Fetch and log all documents in the players collection
+        db.collection("players").get().then((snapshot) => {
+            snapshot.forEach((doc) => {
+                console.log(doc.id, "=>", doc.data());
+            });
+        }).catch((error) => {
+            console.error("Error fetching players: ", error);
+        });
+
         // Listen for updates on player data in Firestore
-        db.collection("players").doc("counter").onSnapshot((doc) => {
+        db.collection("players").doc("counter").get().then((doc) => {
             if (doc.exists) {
                 const counterData = doc.data();
                 db.collection("players").doc("door").get().then((doorDoc) => {
@@ -116,8 +125,8 @@
             } else {
                 console.error("Counter document does not exist");
             }
-        }, (error) => {
-            console.error("Error listening for counter updates: ", error);
+        }).catch(error => {
+            console.error("Error fetching counter data: ", error);
         });
     </script>
 </body>
