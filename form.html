@@ -14,9 +14,20 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
+            width: 100%;
         }
 
-        form {
+        .form-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align all items to the left */
+            width: 45%;
+        }
+
+        .form-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Align all items to the right */
             width: 45%;
         }
 
@@ -65,7 +76,7 @@
 
     <div class="sections" id="sections-container">
         <!-- Counter Section -->
-        <form id="counter-form">
+        <form id="counter-form" class="form-left">
             <h2>Counter</h2>
             <input type="text" id="counter-name" name="counter-name" placeholder="Enter counter name" maxlength="20" required>
 
@@ -122,7 +133,7 @@
         </form>
 
         <!-- Door Section -->
-        <form id="door-form">
+        <form id="door-form" class="form-right">
             <h2>Door</h2>
             <input type="text" id="door-name" name="door-name" placeholder="Enter door name" maxlength="20" required>
 
@@ -212,12 +223,18 @@
             const doorForm = document.getElementById('door-form');
 
             // Swap the positions of Counter and Door sections
-            if (counterForm === sectionsContainer.firstElementChild) {
-                sectionsContainer.appendChild(counterForm); // Move Counter to the end
-                sectionsContainer.insertBefore(doorForm, sectionsContainer.firstElementChild); // Move Door to the beginning
+            if (counterForm.classList.contains('form-left')) {
+                // Swap to move Counter to the right and Door to the left
+                counterForm.classList.remove('form-left');
+                counterForm.classList.add('form-right');
+                doorForm.classList.remove('form-right');
+                doorForm.classList.add('form-left');
             } else {
-                sectionsContainer.appendChild(doorForm); // Move Door to the end
-                sectionsContainer.insertBefore(counterForm, sectionsContainer.firstElementChild); // Move Counter to the beginning
+                // Swap to move Counter to the left and Door to the right
+                counterForm.classList.remove('form-right');
+                counterForm.classList.add('form-left');
+                doorForm.classList.remove('form-left');
+                doorForm.classList.add('form-right');
             }
         });
     </script>
