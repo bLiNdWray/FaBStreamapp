@@ -16,11 +16,19 @@
             margin-bottom: 20px;
         }
 
-        /* Center the entire content of the Counter and Door forms */
-        .counter-form, .door-form {
+        /* Left-aligned Counter form */
+        .counter-form {
             display: flex;
             flex-direction: column;
-            align-items: center;  /* Center horizontally */
+            align-items: flex-start;
+            width: 45%;
+        }
+
+        /* Right-aligned Door form */
+        .door-form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
             width: 45%;
         }
 
@@ -35,7 +43,6 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-            width: 100%;  /* Ensure the row spans the full width */
         }
 
         .row label {
@@ -46,13 +53,21 @@
             margin-right: 20px;
         }
 
-        /* Center the counter and buttons */
+        /* Center everything: hero selector, counter, buttons */
         .life-counter-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
+            width: 100%;  /* Make sure it's full width */
+            text-align: center;
+        }
+
+        /* Center hero selector */
+        .hero-selector {
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
 
         /* Double the size of the counter text */
@@ -132,9 +147,12 @@
                 </select>
             </div>
 
-            <select id="counter-hero" name="hero">
-                <option value="">Select a Hero</option>
-            </select>
+            <!-- Centered hero selector -->
+            <div class="hero-selector">
+                <select id="counter-hero" name="hero">
+                    <option value="">Select a Hero</option>
+                </select>
+            </div>
 
             <div class="life-counter-container">
                 <button type="button" id="plus-counter-life">+</button>
@@ -189,9 +207,12 @@
                 </select>
             </div>
 
-            <select id="door-hero" name="hero">
-                <option value="">Select a Hero</option>
-            </select>
+            <!-- Centered hero selector -->
+            <div class="hero-selector">
+                <select id="door-hero" name="hero">
+                    <option value="">Select a Hero</option>
+                </select>
+            </div>
 
             <div class="life-counter-container">
                 <button type="button" id="plus-door-life">+</button>
