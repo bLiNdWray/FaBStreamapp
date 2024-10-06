@@ -14,27 +14,30 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
-            width: 100%;
         }
 
-        .form-left {
+        /* Left-justify the Counter form */
+        #counter-form {
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Align all items to the left */
+            align-items: flex-start;
             width: 45%;
         }
 
-        .form-right {
+        /* Right-justify the Door form */
+        #door-form {
             display: flex;
             flex-direction: column;
-            align-items: flex-end; /* Align all items to the right */
+            align-items: flex-end;
             width: 45%;
         }
 
+        /* Styling for inputs, selects, and buttons */
         input, select, button {
             margin-bottom: 10px;
         }
 
+        /* Styling for rows (Wins, Losses, Draws) */
         .row {
             display: flex;
             justify-content: space-between;
@@ -76,7 +79,7 @@
 
     <div class="sections" id="sections-container">
         <!-- Counter Section -->
-        <form id="counter-form" class="form-left">
+        <form id="counter-form">
             <h2>Counter</h2>
             <input type="text" id="counter-name" name="counter-name" placeholder="Enter counter name" maxlength="20" required>
 
@@ -133,7 +136,7 @@
         </form>
 
         <!-- Door Section -->
-        <form id="door-form" class="form-right">
+        <form id="door-form">
             <h2>Door</h2>
             <input type="text" id="door-name" name="door-name" placeholder="Enter door name" maxlength="20" required>
 
@@ -223,18 +226,12 @@
             const doorForm = document.getElementById('door-form');
 
             // Swap the positions of Counter and Door sections
-            if (counterForm.classList.contains('form-left')) {
-                // Swap to move Counter to the right and Door to the left
-                counterForm.classList.remove('form-left');
-                counterForm.classList.add('form-right');
-                doorForm.classList.remove('form-right');
-                doorForm.classList.add('form-left');
+            if (counterForm === sectionsContainer.firstElementChild) {
+                sectionsContainer.appendChild(counterForm); // Move Counter to the end
+                sectionsContainer.insertBefore(doorForm, sectionsContainer.firstElementChild); // Move Door to the beginning
             } else {
-                // Swap to move Counter to the left and Door to the right
-                counterForm.classList.remove('form-right');
-                counterForm.classList.add('form-left');
-                doorForm.classList.remove('form-left');
-                doorForm.classList.add('form-right');
+                sectionsContainer.appendChild(doorForm); // Move Door to the end
+                sectionsContainer.insertBefore(counterForm, sectionsContainer.firstElementChild); // Move Counter to the beginning
             }
         });
     </script>
