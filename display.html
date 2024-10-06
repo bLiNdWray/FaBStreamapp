@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Info Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .player-info {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .player-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            width: 45%;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .player-card h2 {
+            text-align: center;
+        }
+
+        .player-card p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Current Player Information</h1>
+    <div class="player-info">
+        <div class="player-card" id="counter-display">
+            <h2>Counter</h2>
+            <p><strong>Name:</strong> <span id="counter-name">John Doe</span></p>
+            <p><strong>Wins:</strong> <span id="counter-wins">0</span></p>
+            <p><strong>Losses:</strong> <span id="counter-losses">0</span></p>
+            <p><strong>Draws:</strong> <span id="counter-draws">0</span></p>
+            <p><strong>Hero:</strong> <span id="counter-hero">None</span></p>
+            <p><strong>Life:</strong> <span id="counter-life">40</span></p>
+        </div>
+
+        <div class="player-card" id="door-display">
+            <h2>Door</h2>
+            <p><strong>Name:</strong> <span id="door-name">Jane Smith</span></p>
+            <p><strong>Wins:</strong> <span id="door-wins">0</span></p>
+            <p><strong>Losses:</strong> <span id="door-losses">0</span></p>
+            <p><strong>Draws:</strong> <span id="door-draws">0</span></p>
+            <p><strong>Hero:</strong> <span id="door-hero">None</span></p>
+            <p><strong>Life:</strong> <span id="door-life">40</span></p>
+        </div>
+    </div>
+
+    <script>
+        // This function will be used to update the display based on data from Firebase or from your app's state
+        function updateDisplay(counterData, doorData) {
+            // Update Counter Player Info
+            document.getElementById('counter-name').textContent = counterData.name;
+            document.getElementById('counter-wins').textContent = counterData.wins;
+            document.getElementById('counter-losses').textContent = counterData.losses;
+            document.getElementById('counter-draws').textContent = counterData.draws;
+            document.getElementById('counter-hero').textContent = counterData.hero;
+            document.getElementById('counter-life').textContent = counterData.life;
+
+            // Update Door Player Info
+            document.getElementById('door-name').textContent = doorData.name;
+            document.getElementById('door-wins').textContent = doorData.wins;
+            document.getElementById('door-losses').textContent = doorData.losses;
+            document.getElementById('door-draws').textContent = doorData.draws;
+            document.getElementById('door-hero').textContent = doorData.hero;
+            document.getElementById('door-life').textContent = doorData.life;
+        }
+
+        // Example data (replace with data from Firebase)
+        const counterData = {
+            name: "John Doe",
+            wins: 5,
+            losses: 2,
+            draws: 1,
+            hero: "Bravo",
+            life: 30
+        };
+
+        const doorData = {
+            name: "Jane Smith",
+            wins: 3,
+            losses: 4,
+            draws: 2,
+            hero: "Iyslander",
+            life: 40
+        };
+
+        // Call the updateDisplay function with example data
+        updateDisplay(counterData, doorData);
+    </script>
+</body>
+</html>
