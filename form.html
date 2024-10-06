@@ -16,7 +16,7 @@
             margin-bottom: 20px;
         }
 
-        /* Left-justify the Counter form */
+        /* Left-aligned Counter form */
         #counter-form {
             display: flex;
             flex-direction: column;
@@ -24,7 +24,7 @@
             width: 45%;
         }
 
-        /* Right-justify the Door form */
+        /* Right-aligned Door form */
         #door-form {
             display: flex;
             flex-direction: column;
@@ -232,6 +232,15 @@
             } else {
                 sectionsContainer.appendChild(doorForm); // Move Door to the end
                 sectionsContainer.insertBefore(counterForm, sectionsContainer.firstElementChild); // Move Counter to the beginning
+            }
+
+            // Adjust the alignment based on the current order
+            if (counterForm === sectionsContainer.firstElementChild) {
+                counterForm.style.alignItems = 'flex-start';
+                doorForm.style.alignItems = 'flex-end';
+            } else {
+                counterForm.style.alignItems = 'flex-end';
+                doorForm.style.alignItems = 'flex-start';
             }
         });
     </script>
